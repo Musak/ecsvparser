@@ -9,7 +9,7 @@
       <definition template="/WEB-INF/jsp/message.jsp"></definition>
     </put-attribute>
     <put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
-    <put-attribute name="admin_navigation" value="/WEB-INF/jsp/navigation.jsp" />
+    <put-attribute name="navigation" value="/WEB-INF/jsp/navigation.jsp" />
     <put-attribute name="content" value="/WEB-INF/jsp/container.jsp" />
     <put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
   </definition>

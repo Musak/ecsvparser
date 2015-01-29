@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row" style="background: rgb(18, 103, 155); color: #ffffff">
+		<div class="row" style="border-bottom: 1px solid #ccc; padding: 10px; color: #ffffff">
 			<tiles:insertAttribute name="header" />
 		</div>
 		

@@ -2,14 +2,56 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<artifactId>ecsvparser-repository</artifactId>
+	<name>ecsvparser-repository</name>
+
 	<parent>
 		<groupId>com.epam</groupId>
 		<artifactId>ecsvparser</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
-	<artifactId>ecsvparser-repository</artifactId>
-	<name>ecsvparser-repository</name>
+
+	<properties>
+		<dv.hibernate>4.3.5.Final</dv.hibernate>
+		<dv.hibernate-validator>5.0.3.Final</dv.hibernate-validator>
+		<dv.liquibase>3.2.2</dv.liquibase>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${dv.hibernate}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${dv.hibernate-validator}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${dv.mysql-connector}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${dv.liquibase}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<finalName>ecsvparser-repository</finalName>

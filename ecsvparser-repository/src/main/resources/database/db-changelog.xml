@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet author="Istvan_Musak" id="initial-schema-1">
+		<createTable tableName="employee">
+			<column name="employeeId" type="char(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="firstName" type="VARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="lastName" type="VARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="salary" type="INT(10)">
+				<constraints nullable="false" />
+			</column>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="creationTime"
+				type="TIMESTAMP(19)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<createTable tableName="department">
+			<column name="departmentId" type="char(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(50)" />
+			<column name="average" type="DOUBLE">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>
