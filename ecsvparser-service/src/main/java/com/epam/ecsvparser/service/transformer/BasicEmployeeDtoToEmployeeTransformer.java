@@ -10,9 +10,14 @@ public class BasicEmployeeDtoToEmployeeTransformer implements
 		EmployeeDtoToEmployeeTransformer {
 
 	@Override
-	public EmployeeDto transform(Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee transform(EmployeeDto employeeDto) {
+		Employee employee = new Employee();
+		employee.setFirstName(employeeDto.getFirstName());
+		employee.setLastName(employeeDto.getLastName());
+		employee.setSalary(employeeDto.getSalary());
+		employee.setCreationTime(employeeDto.getCreationTime());
+		employee.setEmployeeId(employeeDto.getEmployeeId());
+		return employee;
 	}
 
 }

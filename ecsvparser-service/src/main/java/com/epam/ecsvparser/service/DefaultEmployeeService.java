@@ -4,40 +4,38 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.epam.ecsvparser.service.dal.EmployeeDao;
 import com.epam.ecsvparser.service.domain.EmployeeDto;
 
 @Service
 @Transactional
 public class DefaultEmployeeService implements EmployeeService {
 
+	private EmployeeDao employeeDao;
+	
 	@Override
 	public EmployeeDto createEmployee() {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeDao.createEmployee();
 	}
 
 	@Override
 	public EmployeeDto updateEmployee() {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeDao.updateEmployee();
 	}
 
 	@Override
 	public void deleteEmployee(String employeeId) {
-		// TODO Auto-generated method stub
-
+		employeeDao.deleteEmployee(employeeId);
 	}
 
 	@Override
 	public EmployeeDto getEmployee(String employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeDao.getEmployee(employeeId);
 	}
 
 	@Override
 	public Iterable<EmployeeDto> getEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeDao.getEmployees();
 	}
 
 }

@@ -9,9 +9,14 @@ import com.epam.ecsvparser.service.domain.EmployeeDto;
 public class BasicEmployeeToEmployeeDtoTransformer implements EmployeeToEmployeeDtoTransformer {
 
 	@Override
-	public Employee transform(EmployeeDto employeeDto) {
-		// TODO Auto-generated method stub
-		return null;
+	public EmployeeDto transform(Employee employee) {
+		EmployeeDto employeeDto = new EmployeeDto();
+		employeeDto.setEmployeeId(employee.getEmployeeId());
+		employeeDto.setFirstName(employee.getFirstName());
+		employeeDto.setLastName(employee.getLastName());
+		employeeDto.setCreationTime(employee.getCreationTime());
+		employeeDto.setSalary(employee.getSalary());
+		return employeeDto;
 	}
 
 }

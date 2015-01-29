@@ -4,5 +4,5 @@ import com.epam.ecsvparser.repository.Employee;
 import com.epam.ecsvparser.service.domain.EmployeeDto;
 
 public interface EmployeeToEmployeeDtoTransformer {
-	Employee transform(EmployeeDto employeeDto);
+	EmployeeDto transform(Employee employee);
 }

@@ -1,5 +1,9 @@
 package com.epam.ecsvparser.service.transformer;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,26 +26,33 @@ public class BasicEmployeeTransformerFacade implements EmployeeTransformerFacade
 
 	@Override
 	public Employee toEmployee(EmployeeDto employeeDto) {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeDtoToEmployeeTransformer.transform(employeeDto);
 	}
 
 	@Override
 	public EmployeeDto fromEmployee(Employee employee) {
-		// TODO Auto-generated method stub
+		employeeToEmployeeDtoTransformer.transform(employee);
 		return null;
 	}
 
 	@Override
 	public Iterable<Employee> toEmployees(Iterable<EmployeeDto> employeeDto) {
-		// TODO Auto-generated method stub
-		return null;
+		Iterator<EmployeeDto> iterator = employeeDto.iterator();
+		List<Employee> employees = new ArrayList<Employee>();
+		while (iterator.hasNext()) {
+			employees.add(this.toEmployee(iterator.next()));
+		}
+		return employees;
 	}
 
 	@Override
 	public Iterable<EmployeeDto> fromEmployees(Iterable<Employee> employees) {
-		// TODO Auto-generated method stub
-		return null;
+		Iterator<Employee> iterator = employees.iterator();
+		List<EmployeeDto> employeesDto = new ArrayList<EmployeeDto>();
+		while (iterator.hasNext()) {
+			employeesDto.add(this.fromEmployee(iterator.next()));
+		}
+		return employeesDto;
 	}
 
 }
