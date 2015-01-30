@@ -1,4 +1,4 @@
-package com.epam.ecsvparser.service.transformer;
+package com.epam.ecsvparser.service.transformer.employee;
 
 import com.epam.ecsvparser.repository.Employee;
 import com.epam.ecsvparser.service.domain.EmployeeDto;

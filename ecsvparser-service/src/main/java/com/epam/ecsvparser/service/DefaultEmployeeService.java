@@ -2,6 +2,7 @@ package com.epam.ecsvparser.service;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.epam.ecsvparser.service.dal.EmployeeDao;
@@ -12,15 +13,20 @@ import com.epam.ecsvparser.service.domain.EmployeeDto;
 public class DefaultEmployeeService implements EmployeeService {
 
 	private EmployeeDao employeeDao;
-	
-	@Override
-	public EmployeeDto createEmployee() {
-		return employeeDao.createEmployee();
+
+	@Autowired
+	public DefaultEmployeeService(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
 	}
 
 	@Override
-	public EmployeeDto updateEmployee() {
-		return employeeDao.updateEmployee();
+	public EmployeeDto createEmployee(EmployeeDto employeeDto) {
+		return employeeDao.createEmployee(employeeDto);
+	}
+
+	@Override
+	public EmployeeDto updateEmployee(EmployeeDto employeeDto) {
+		return employeeDao.updateEmployee(employeeDto);
 	}
 
 	@Override

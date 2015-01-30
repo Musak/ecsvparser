@@ -6,7 +6,10 @@
 	<bean id="repositoryContext"
 		class="org.springframework.context.support.ClassPathXmlApplicationContext">
 		<constructor-arg>
-			<value>repository-context.xml</value>
+			<list>
+				<value>/persistence-config.xml</value>
+				<value>/repository-context.xml</value>
+			</list>
 		</constructor-arg>
 	</bean>
 </beans>

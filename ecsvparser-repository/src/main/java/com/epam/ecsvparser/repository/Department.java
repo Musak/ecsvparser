@@ -1,10 +1,19 @@
 package com.epam.ecsvparser.repository;
 
+import java.util.Collection;
+import java.util.HashSet;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -23,9 +32,14 @@ public class Department {
 	@Column(name = "name")
 	private String name;
 	
-	@NotEmpty
+	@NotNull
+	@Max(10000000)
+	@Min(-10000)
 	@Column(name = "average")
-	private Double average;
+	private double average;
+	
+	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Collection<Employee> employees = new HashSet<Employee>();
 
 	public String getDepartmentId() {
 		return departmentId;
@@ -51,13 +65,25 @@ public class Department {
 		this.average = average;
 	}
 
+	public Collection<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Iterable<Employee> employees) {
+		this.employees = (Collection<Employee>) employees;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((average == null) ? 0 : average.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(average);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result
 				+ ((departmentId == null) ? 0 : departmentId.hashCode());
+		result = prime * result
+				+ ((employees == null) ? 0 : employees.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -71,15 +97,18 @@ public class Department {
 		if (getClass() != obj.getClass())
 			return false;
 		Department other = (Department) obj;
-		if (average == null) {
-			if (other.average != null)
-				return false;
-		} else if (!average.equals(other.average))
+		if (Double.doubleToLongBits(average) != Double
+				.doubleToLongBits(other.average))
 			return false;
 		if (departmentId == null) {
 			if (other.departmentId != null)
 				return false;
 		} else if (!departmentId.equals(other.departmentId))
+			return false;
+		if (employees == null) {
+			if (other.employees != null)
+				return false;
+		} else if (!employees.equals(other.employees))
 			return false;
 		if (name == null) {
 			if (other.name != null)

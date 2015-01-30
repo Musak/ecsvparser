@@ -4,25 +4,24 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 	<changeSet author="Istvan_Musak" id="initial-schema-1">
 		<createTable tableName="employee">
-			<column name="employeeId" type="char(36)">
+			<column name="employee_id" type="char(36)">
 				<constraints nullable="false" />
 			</column>
-			<column name="firstName" type="VARCHAR(100)">
+			<column name="first_name" type="VARCHAR(100)">
 				<constraints nullable="false" />
 			</column>
-			<column name="lastName" type="VARCHAR(100)">
+			<column name="last_name" type="VARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="department" type="char(36)">
 				<constraints nullable="false" />
 			</column>
 			<column name="salary" type="INT(10)">
 				<constraints nullable="false" />
 			</column>
-			<column defaultValueComputed="CURRENT_TIMESTAMP" name="creationTime"
-				type="TIMESTAMP(19)">
-				<constraints nullable="false" />
-			</column>
 		</createTable>
 		<createTable tableName="department">
-			<column name="departmentId" type="char(36)">
+			<column name="department_id" type="char(36)">
 				<constraints nullable="false" />
 			</column>
 			<column name="name" type="VARCHAR(50)" />
@@ -30,5 +29,25 @@
 				<constraints nullable="false" />
 			</column>
 		</createTable>
+
+		<addPrimaryKey columnNames="employee_id" constraintName="employeePK"
+			tableName="employee" />
+		<addPrimaryKey columnNames="department_id"
+			constraintName="departmentPK" tableName="department" />
+		<addForeignKeyConstraint baseColumnNames="department"
+			baseTableName="employee" constraintName="fk_department" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="department_id" referencedTableName="department" />
+
+		<insert tableName="department">
+			<column name="department_id" value="0198880e-ccf6-4c0c-a598-10edad2ee67d" />
+			<column name="name" value="department1" />
+			<column name="average" valueDate="0" />
+		</insert>
+		<insert tableName="department">
+			<column name="department_id" value="0198880e-ccf6-4c0c-a598-10edad2ee67r" />
+			<column name="name" value="department2" />
+			<column name="average" valueDate="0" />
+		</insert>
 	</changeSet>
 </databaseChangeLog>

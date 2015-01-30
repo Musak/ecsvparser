@@ -1,7 +1,5 @@
 package com.epam.ecsvparser.service.domain;
 
-import org.joda.time.DateTime;
-
 public class EmployeeDto {
 	
 	private String employeeId;
@@ -12,7 +10,7 @@ public class EmployeeDto {
 	
 	private Integer salary;
 	
-	private DateTime creationTime;
+	private DepartmentDto departmentDto;
 
 	public String getEmployeeId() {
 		return employeeId;
@@ -46,12 +44,12 @@ public class EmployeeDto {
 		this.salary = salary;
 	}
 
-	public DateTime getCreationTime() {
-		return creationTime;
+	public DepartmentDto getDepartmentDto() {
+		return departmentDto;
 	}
 
-	public void setCreationTime(DateTime creationTime) {
-		this.creationTime = creationTime;
+	public void setDepartmentDto(DepartmentDto departmentDto) {
+		this.departmentDto = departmentDto;
 	}
 
 	@Override
@@ -59,7 +57,7 @@ public class EmployeeDto {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((creationTime == null) ? 0 : creationTime.hashCode());
+				+ ((departmentDto == null) ? 0 : departmentDto.hashCode());
 		result = prime * result
 				+ ((employeeId == null) ? 0 : employeeId.hashCode());
 		result = prime * result
@@ -79,10 +77,10 @@ public class EmployeeDto {
 		if (getClass() != obj.getClass())
 			return false;
 		EmployeeDto other = (EmployeeDto) obj;
-		if (creationTime == null) {
-			if (other.creationTime != null)
+		if (departmentDto == null) {
+			if (other.departmentDto != null)
 				return false;
-		} else if (!creationTime.equals(other.creationTime))
+		} else if (!departmentDto.equals(other.departmentDto))
 			return false;
 		if (employeeId == null) {
 			if (other.employeeId != null)
@@ -106,4 +104,12 @@ public class EmployeeDto {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "EmployeeDto [employeeId=" + employeeId + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", salary=" + salary
+				+ ", departmentDto=" + departmentDto + "]";
+	}
+
 }

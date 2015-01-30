@@ -1,4 +1,4 @@
-package com.epam.ecsvparser.service.transformer;
+package com.epam.ecsvparser.service.transformer.employee;
 
 import java.util.ArrayList;
 import java.util.Iterator;

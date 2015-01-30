@@ -4,13 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.joda.time.DateTime;
 
 @Entity
 @Table(name="employee")
@@ -30,14 +32,16 @@ public class Employee {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@NotEmpty
+	@NotNull
+	@Min(0)
+	@Max(Integer.MAX_VALUE)
 	@Column(name = "salary")
 	private Integer salary;
 	
-	@Column(name = "creation_time")
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	@NotNull
-	private DateTime creationTime;
+	@ManyToOne
+	@JoinColumn(name="department")
+	private Department department;
 
 	public String getEmployeeId() {
 		return employeeId;
@@ -71,12 +75,12 @@ public class Employee {
 		this.salary = salary;
 	}
 
-	public DateTime getCreationTime() {
-		return creationTime;
+	public Department getDepartment() {
+		return department;
 	}
 
-	public void setCreationTime(DateTime creationTime) {
-		this.creationTime = creationTime;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	@Override
@@ -84,7 +88,7 @@ public class Employee {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((creationTime == null) ? 0 : creationTime.hashCode());
+				+ ((department == null) ? 0 : department.hashCode());
 		result = prime * result
 				+ ((employeeId == null) ? 0 : employeeId.hashCode());
 		result = prime * result
@@ -104,10 +108,10 @@ public class Employee {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		if (creationTime == null) {
-			if (other.creationTime != null)
+		if (department == null) {
+			if (other.department != null)
 				return false;
-		} else if (!creationTime.equals(other.creationTime))
+		} else if (!department.equals(other.department))
 			return false;
 		if (employeeId == null) {
 			if (other.employeeId != null)
@@ -131,4 +135,5 @@ public class Employee {
 			return false;
 		return true;
 	}
+
 }

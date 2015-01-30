@@ -7,7 +7,7 @@
 	class="org.springframework.context.support.ClassPathXmlApplicationContext">
 		<constructor-arg>
 			<list>
-				<value>service-context.xml</value>
+				<value>/service-context.xml</value>
 			</list>
 		</constructor-arg>
 		<constructor-arg ref="repositoryContext" />

@@ -3,9 +3,9 @@ package com.epam.ecsvparser.service.dal;
 import com.epam.ecsvparser.service.domain.EmployeeDto;
 
 public interface EmployeeDao {
-	EmployeeDto createEmployee();
+	EmployeeDto createEmployee(EmployeeDto employeeDto);
 	
-	EmployeeDto updateEmployee();
+	EmployeeDto updateEmployee(EmployeeDto employeeDto);
 	
 	void deleteEmployee(String employeeId);
 	

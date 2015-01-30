@@ -13,8 +13,14 @@
 		<!-- setting maximum upload size -->
 		<property name="maxUploadSize" value="100000" />
 	</bean>
-
+	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<mvc:annotation-driven />
+	
+	<context:component-scan base-package="com.epam.ecsvparser.web.controller" />
+	<context:spring-configured />
+	
 
 	<bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
@@ -31,7 +37,5 @@
 			value="org.springframework.web.servlet.view.tiles2.TilesView" />
 	</bean>
 
-	<context:component-scan base-package="com.epam.ecsvparser.web" />
-	<context:spring-configured />
 
 </beans>

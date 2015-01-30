@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.epam.ecsvparser.service.FileProcessor;
+import com.epam.ecsvparser.web.urlbuilder.HomeUrlBuilder;
 
 @Controller
 public class FileUploadController {
@@ -24,7 +25,6 @@ public class FileUploadController {
 	}
 
 	@RequestMapping(value="/uploadFile", method=RequestMethod.POST)
-	@ResponseBody
 	public String uploadFile(@RequestParam("file") MultipartFile file) {
 		
 		// TODO Call CSVFileProcessor with file and return the result String
@@ -37,6 +37,11 @@ public class FileUploadController {
 			e.printStackTrace();
 		}
 		
+		return "redirect:"+HomeUrlBuilder.HOME_URL;
+	}
+	
+	@RequestMapping(value="/uploadFile", method=RequestMethod.GET)
+	public String uploadFileHome() {
 		return "home";
 	}
 }

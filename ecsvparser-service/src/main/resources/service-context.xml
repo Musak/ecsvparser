@@ -14,11 +14,15 @@
 		class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
 		<property name="jobRepository" ref="jobRepository" />
 	</bean>
+	<bean id="jobExplorer"
+        class="org.springframework.batch.core.explore.support.JobExplorerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
 	<batch:job id="reportJob">
 		<batch:step id="step1">
 			<batch:tasklet>
-				<batch:chunk reader="cvsFileItemReader" writer="mysqlItemWriter"
+				<batch:chunk reader="cvsFileItemReader" writer="transactionalDatabaseItemWriter"
 					commit-interval="2">
 				</batch:chunk>
 			</batch:tasklet>
@@ -29,7 +33,7 @@
 		scope="step">
 		<!-- Read a csv file -->
 		<property name="resource" value="file:#{jobParameters['fileName']}" />
-		<property name="lineToSkip" value="1" />
+		<property name="linesToSkip" value="1" />
 		<property name="lineMapper" ref="defaultLineMapper" />
 	</bean>
 	<bean id="defaultLineMapper"
@@ -39,6 +43,7 @@
 	</bean>
 	<bean id="delimitedLineTokenizer"
 		class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
-		<property name="names" value="firstName,lastName,salary" />
+		<property name="names" value="firstName,lastName,department,salary" />
 	</bean>
+	
 </beans>
