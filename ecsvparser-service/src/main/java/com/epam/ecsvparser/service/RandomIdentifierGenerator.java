@@ -1,11 +1,7 @@
 package com.epam.ecsvparser.service;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
-
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.stereotype.Component;
 
 @Component

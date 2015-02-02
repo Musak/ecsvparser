@@ -1,4 +1,4 @@
-package com.epam.ecsvparser.service.dal;
+package com.epam.ecsvparser.service.exception;
 
 public class DepartmentNotFoundException extends RuntimeException {
 

@@ -26,8 +26,9 @@ public class EmployeeFieldSetMapper implements FieldSetMapper<EmployeeDto> {
 		EmployeeDto employeeDto = new EmployeeDto();
 		employeeDto.setFirstName(fieldSet.readString(0));
 		employeeDto.setLastName(fieldSet.readString(1));
-		String readString = fieldSet.readString(2);
-		DepartmentDto departmentByName = departmentDao.getDepartmentByName(readString);
+		
+		String departmentName = fieldSet.readString(2);
+		DepartmentDto departmentByName = departmentDao.getDepartmentByName(departmentName);
 		employeeDto.setDepartmentDto(departmentByName);
 		employeeDto.setSalary(fieldSet.readInt(3));
 		return employeeDto;

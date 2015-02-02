@@ -1,4 +1,4 @@
-package com.epam.ecsvparser.repository;
+package com.epam.ecsvparser.repository.deparment;
 
 import org.springframework.data.repository.CrudRepository;
 

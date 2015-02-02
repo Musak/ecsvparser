@@ -1,15 +1,13 @@
 package com.epam.ecsvparser.web.controller;
 
-import java.io.IOException;
 
-import org.springframework.batch.core.JobExecution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.epam.ecsvparser.service.FileProcessor;
 import com.epam.ecsvparser.web.urlbuilder.HomeUrlBuilder;
@@ -25,16 +23,13 @@ public class FileUploadController {
 	}
 
 	@RequestMapping(value="/uploadFile", method=RequestMethod.POST)
-	public String uploadFile(@RequestParam("file") MultipartFile file) {
-		
-		// TODO Call CSVFileProcessor with file and return the result String
-		// Autowired the fileprocessor
+	public String uploadFile(@RequestParam("file") MultipartFile file,
+			final RedirectAttributes redirectAttributes) {
 		
 		try {
-			JobExecution process = fileProcessor.process(file.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			fileProcessor.process(file.getBytes());
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
 		}
 		
 		return "redirect:"+HomeUrlBuilder.HOME_URL;

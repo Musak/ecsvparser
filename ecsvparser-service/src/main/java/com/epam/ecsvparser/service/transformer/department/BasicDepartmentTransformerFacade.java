@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.epam.ecsvparser.repository.Department;
+import com.epam.ecsvparser.repository.deparment.Department;
 import com.epam.ecsvparser.service.domain.DepartmentDto;
 
 @Component

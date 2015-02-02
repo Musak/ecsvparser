@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import com.epam.ecsvparser.repository.Department;
-import com.epam.ecsvparser.repository.DepartmentRepository;
+import com.epam.ecsvparser.repository.deparment.Department;
+import com.epam.ecsvparser.repository.deparment.DepartmentRepository;
 import com.epam.ecsvparser.service.domain.DepartmentDto;
+import com.epam.ecsvparser.service.exception.DepartmentNotFoundException;
 import com.epam.ecsvparser.service.transformer.department.DepartmentTransformerFacade;
 
 @Component

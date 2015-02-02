@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import com.epam.ecsvparser.repository.Employee;
-import com.epam.ecsvparser.repository.EmployeeRepository;
+import com.epam.ecsvparser.repository.employee.Employee;
+import com.epam.ecsvparser.repository.employee.EmployeeRepository;
 import com.epam.ecsvparser.service.UniqueConstraintException;
 import com.epam.ecsvparser.service.domain.EmployeeDto;
 import com.epam.ecsvparser.service.transformer.employee.EmployeeTransformerFacade;

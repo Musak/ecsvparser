@@ -1,4 +1,4 @@
-package com.epam.ecsvparser.repository;
+package com.epam.ecsvparser.repository.employee;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.epam.ecsvparser.repository.deparment.Department;
 
 @Entity
 @Table(name="employee")
