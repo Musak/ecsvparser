@@ -33,7 +33,7 @@ public class TransactionalDatabaseItemWriter implements ItemWriter<EmployeeDto> 
 				employeeService.createEmployee(employeeDto);
 			}
 		} else {
-			throw new FileUploadException("Error Saving CSV file");
+			throw new FileUploadException("CSV file size it's too big.");
 		}
 	}
 

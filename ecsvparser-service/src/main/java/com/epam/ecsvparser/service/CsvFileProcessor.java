@@ -50,7 +50,7 @@ public class CsvFileProcessor implements FileProcessor {
 		} catch (JobExecutionAlreadyRunningException | JobRestartException
 				| JobInstanceAlreadyCompleteException
 				| JobParametersInvalidException | UniqueConstraintException e) {
-			throw new FileUploadException("Error Processign CSV file");
+			throw new FileUploadException("Error Processign CSV file: " + e.getMessage());
 		}
 		
 		if(execution.getStatus().isUnsuccessful()) {
