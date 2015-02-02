@@ -28,6 +28,7 @@ public class FileUploadController {
 		
 		try {
 			fileProcessor.process(file.getBytes());
+			redirectAttributes.addFlashAttribute("message","CSV File Successfully uploaded and stored in database.");
 		} catch (Exception e) {
 			redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
 		}

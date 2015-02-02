@@ -7,12 +7,9 @@
 	role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
+					<span class="icon-bar"></span><a href="<c:url value="/" />" >Home</a>  | 
+					<span class="icon-bar"></span><a href="<c:url value="/list" />" >List</a> 
+					 <span class="icon-bar"></span>
 		</div>
 	</div>
 </nav>

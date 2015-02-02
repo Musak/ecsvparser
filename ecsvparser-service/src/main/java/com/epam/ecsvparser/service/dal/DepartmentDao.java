@@ -14,4 +14,6 @@ public interface DepartmentDao {
 		Iterable<DepartmentDto> getDepartments();
 
 		DepartmentDto getDepartmentByName(String readString);
+		
+		Double getSalaryAverage(DepartmentDto departmentId);
 }

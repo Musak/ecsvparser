@@ -6,19 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindException;
 
-import com.epam.ecsvparser.service.dal.DepartmentDao;
+import com.epam.ecsvparser.service.DepartmentService;
 import com.epam.ecsvparser.service.domain.DepartmentDto;
 import com.epam.ecsvparser.service.domain.EmployeeDto;
 
 @Component
 public class EmployeeFieldSetMapper implements FieldSetMapper<EmployeeDto> {
 
-	// TODO implement DepartmentService
-	private DepartmentDao departmentDao;
+	private DepartmentService departmentService;
 	
 	@Autowired
-	public EmployeeFieldSetMapper(DepartmentDao departmentDao) {
-		this.departmentDao = departmentDao;
+	public EmployeeFieldSetMapper(DepartmentService departmentService) {
+		this.departmentService = departmentService;
 	}
 
 	@Override
@@ -28,7 +27,7 @@ public class EmployeeFieldSetMapper implements FieldSetMapper<EmployeeDto> {
 		employeeDto.setLastName(fieldSet.readString(1));
 		
 		String departmentName = fieldSet.readString(2);
-		DepartmentDto departmentByName = departmentDao.getDepartmentByName(departmentName);
+		DepartmentDto departmentByName = departmentService.getDepartmentByName(departmentName);
 		employeeDto.setDepartmentDto(departmentByName);
 		employeeDto.setSalary(fieldSet.readInt(3));
 		return employeeDto;

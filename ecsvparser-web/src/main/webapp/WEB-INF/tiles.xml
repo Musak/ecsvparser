@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.2.2//EN"
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+       
 <tiles-definitions>
 
   <definition name="base" template="/WEB-INF/jsp/base.jsp">
@@ -16,6 +17,10 @@
 
   <definition name="home" extends="base">
     <put-attribute name="content" value="/WEB-INF/jsp/home.jsp" />
+  </definition>
+  
+  <definition name="list" extends="base">
+    <put-attribute name="content" value="/WEB-INF/jsp/list.jsp" />
   </definition>
   
   <!-- Error pages -->

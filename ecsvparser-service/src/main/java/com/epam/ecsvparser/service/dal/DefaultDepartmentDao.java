@@ -52,7 +52,8 @@ public class DefaultDepartmentDao implements DepartmentDao {
 
 	@Override
 	public DepartmentDto getDepartment(String departmentId) {
-		return departmentTransformenrFacade.fromDepartment(departmentRepository.findOne(departmentId));
+		Department findOne = departmentRepository.findOne(departmentId);		
+		return departmentTransformenrFacade.fromDepartment(findOne);
 	}
 
 	@Override
@@ -66,6 +67,11 @@ public class DefaultDepartmentDao implements DepartmentDao {
 		Department department = departmentRepository.findOneByName(departmentName);
 		
 		return departmentTransformenrFacade.fromDepartment(department);
+	}
+
+	@Override
+	public Double getSalaryAverage(DepartmentDto department) {
+		return departmentRepository.getSalaryAverage(departmentTransformenrFacade.toDepartment(department));
 	}
 
 }

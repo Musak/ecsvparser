@@ -18,7 +18,7 @@
 	
 	<mvc:annotation-driven />
 	
-	<context:component-scan base-package="com.epam.ecsvparser.web.controller" />
+	<context:component-scan base-package="com.epam.ecsvparser.web" />
 	<context:spring-configured />
 	
 
