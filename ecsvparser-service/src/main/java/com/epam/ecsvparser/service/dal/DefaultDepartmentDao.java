@@ -41,8 +41,10 @@ public class DefaultDepartmentDao implements DepartmentDao {
 
 	@Override
 	public DepartmentDto updateDepartment(DepartmentDto departmentDto) {
-		// TODO Auto-generated method stub
-		return null;
+		Assert.notNull(departmentDto);
+		checkDepartmentIfExists(departmentDto);
+		Department department = departmentRepository.save(departmentTransformenrFacade.toDepartment(departmentDto));
+		return departmentTransformenrFacade.fromDepartment(department);
 	}
 
 	@Override

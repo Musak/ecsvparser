@@ -3,7 +3,6 @@ package com.epam.ecsvparser.service;
 import java.util.List;
 
 import javax.transaction.Transactional;
-
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,6 +40,7 @@ public class TransactionalDatabaseItemWriter implements ItemWriter<EmployeeDto> 
 			if(departments!=null)
 			for (DepartmentDto department : departments) {
 				department.setAverage(departmentService.getSalaryAverage(department));
+				departmentService.updateDepartment(department);
 			}
 		} else {
 			throw new FileUploadException("CSV file size it's too big.");
